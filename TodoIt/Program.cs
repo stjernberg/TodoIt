@@ -1,4 +1,5 @@
 ﻿using System;
+using TodoIt.Models;
 
 namespace TodoIt
 {
@@ -6,7 +7,10 @@ namespace TodoIt
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Person theperson = new Person();
+            Person testPerson = new Person(1, "William", "Smith");
+            Console.WriteLine(testPerson.Info());
+
         }
     }
 }
