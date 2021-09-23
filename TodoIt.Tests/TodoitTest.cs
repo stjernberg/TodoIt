@@ -4,7 +4,7 @@ using TodoIt.Models;
 
 namespace TodoIt.Tests
 {
-    public class PersonTest
+    public class TodoItTest
     {
         [Fact]
         public void TestFirstNameGoodValue()
@@ -43,7 +43,7 @@ namespace TodoIt.Tests
         public void TestFirstNameBadValue(string badFirstName)
         {
             //Arrange
-            Person testPerson = new Person(2, "Sam", "Jonsson");
+            Person testPerson = new Person(4, "Tom", "Lind");
 
             //Act
             var exception = Assert.Throws<ArgumentException>(() => testPerson.FirstName = badFirstName);
@@ -72,7 +72,7 @@ namespace TodoIt.Tests
 
 
         [Fact]
-        public void CorrectInfoTest()
+        public void CorrectInfoPersonTest()
         {
             //Arrange
             string firstName = "Susy";
@@ -81,7 +81,7 @@ namespace TodoIt.Tests
             Person testPerson = new Person(personId, firstName, lastName);
 
             //Act
-            string result = testPerson.Info();
+            string result = testPerson.InfoPerson();
 
             //Assert
             Assert.NotNull(result);
@@ -89,6 +89,24 @@ namespace TodoIt.Tests
             Assert.Contains(lastName, result);
             Assert.Contains(personId.ToString(), result);
 
+        }
+
+        [Fact]
+        public void CorrectInfoTodoTest()
+        {
+            //Arrange
+            int todoId = 3;
+            string description = "Finish assignment";
+            Todo testTodo = new Todo(todoId, description);
+
+            //Act
+            string result = testTodo.InfoTodo();
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.Contains(todoId.ToString(), result);
+            Assert.Contains(description, result);
+           
         }
 
 

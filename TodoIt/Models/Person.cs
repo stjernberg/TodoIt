@@ -10,11 +10,25 @@ namespace TodoIt.Models
         private string firstName;
         private string lastName;
 
-        /*public Person()
+        public Person()
         {
 
-        }*/
+        }
+        
+        public Person(int personId, string firstName, string lastName)
+        {
+            this.personId = personId;
+            FirstName = firstName;
+            LastName = lastName;
+        }
 
+        public int PersonId
+        { 
+            get 
+            { 
+                return personId;
+            } 
+        }
 
         public string FirstName
         {
@@ -26,7 +40,7 @@ namespace TodoIt.Models
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Firstname can't be null or empty.");
                 }
@@ -36,7 +50,6 @@ namespace TodoIt.Models
                     firstName = value;
                 }
             }
-
 
         }
         public string LastName
@@ -61,16 +74,11 @@ namespace TodoIt.Models
 
         }
 
-        public Person(int personId, string firstName, string lastName)
-        {
-            this.personId = personId;
-            FirstName = firstName;
-            LastName = lastName;
-        }
+        
         //testing the info
-        public string Info()
+        public string InfoPerson()
         {
-            return $"Person Info:\n First name: {firstName}\nLast name: {lastName}\nPerson Id: {personId}";
+            return $"Person Info\nFirst name: {firstName}\nLast name: {lastName}\nPerson Id: {personId}";
         }
 
 
