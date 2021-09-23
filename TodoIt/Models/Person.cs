@@ -14,7 +14,7 @@ namespace TodoIt.Models
         {
 
         }
-        
+
         public Person(int personId, string firstName, string lastName)
         {
             this.personId = personId;
@@ -23,11 +23,11 @@ namespace TodoIt.Models
         }
 
         public int PersonId
-        { 
-            get 
-            { 
+        {
+            get
+            {
                 return personId;
-            } 
+            }
         }
 
         public string FirstName
@@ -74,7 +74,7 @@ namespace TodoIt.Models
 
         }
 
-        
+
         //testing the info
         public string InfoPerson()
         {

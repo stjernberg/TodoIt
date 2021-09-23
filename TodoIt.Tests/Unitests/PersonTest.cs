@@ -1,10 +1,11 @@
 using System;
 using Xunit;
 using TodoIt.Models;
+using TodoIt.Data;
 
 namespace TodoIt.Tests
 {
-    public class TodoItTest
+    public class PersonTest
     {
         [Fact]
         public void TestFirstNameGoodValue()
@@ -106,9 +107,42 @@ namespace TodoIt.Tests
             Assert.NotNull(result);
             Assert.Contains(todoId.ToString(), result);
             Assert.Contains(description, result);
-           
+
         }
 
+        [Fact]
+        public void IncrementPersonIdTest()
+        {
+
+            //---Temporarlily took away static in the method when testing---
+            //Arrange            
+           PersonSequencer testSequencer = new PersonSequencer(5);
+
+            //Act
+            int result = testSequencer.NextPersonId();
+            int expected = 6;
+
+            //Assert
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void ResetIdTest()
+        {
+
+            //---Temporarlily took away static in the method when testing---
+
+            //Arrange
+            PersonSequencer testSequencer = new PersonSequencer(2);
+
+            //Act
+            int result = testSequencer.Reset();
+            int expected = 0;
+
+            //Assert
+            Assert.Equal(expected, result);
+
+        }
 
     }
 }
