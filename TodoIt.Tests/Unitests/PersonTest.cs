@@ -114,12 +114,11 @@ namespace TodoIt.Tests
         public void IncrementPersonIdTest()
         {
 
-            //---Temporarlily took away static in the method when testing---
             //Arrange            
            PersonSequencer testSequencer = new PersonSequencer(5);
 
             //Act
-            int result = testSequencer.NextPersonId();
+            int result = PersonSequencer.NextPersonId();
             int expected = 6;
 
             //Assert
@@ -127,16 +126,49 @@ namespace TodoIt.Tests
         }
 
         [Fact]
-        public void ResetIdTest()
+        public void ResetPersonIdTest()
         {
 
-            //---Temporarlily took away static in the method when testing---
+          
+            //Arrange
+            PersonSequencer testSequencer = new PersonSequencer(2);
+
+            //Act
+            int result = PersonSequencer.Reset();
+           
+            int expected = 0;
+
+            //Assert
+            Assert.Equal(expected, result);
+
+        }
+
+        [Fact]
+        public void IncrementTodoIdTest()
+        {
+
+            //Arrange            
+            TodoSequencer testSequencer = new TodoSequencer(5);
+
+            //Act
+            int result = PersonSequencer.NextPersonId();
+            int expected = 6;
+
+            //Assert
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void ResetTodoIdTest()
+        {
+
 
             //Arrange
             PersonSequencer testSequencer = new PersonSequencer(2);
 
             //Act
-            int result = testSequencer.Reset();
+            int result = PersonSequencer.Reset();
+
             int expected = 0;
 
             //Assert
