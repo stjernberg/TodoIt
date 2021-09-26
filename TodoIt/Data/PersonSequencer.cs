@@ -20,10 +20,7 @@ namespace TodoIt.Data
                 personId = value;
             }
         }
-        public PersonSequencer(int personId)
-        {
-            PersonId = personId;
-        }
+        
         public static int NextPersonId()          
         {
              personId ++;

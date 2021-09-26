@@ -9,7 +9,7 @@ namespace TodoIt.Models
         private readonly int todoId;
         private string description;
         private bool done;
-        private Person assignee = new Person();
+        private Person assignee;
 
         public int TodoId
         {

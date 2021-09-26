@@ -8,23 +8,36 @@ namespace TodoIt.Data
     public class People
     {
        
-        private static Person[] people = new Person[0];
+        private static Person[] personArray = new Person[0];
        
+        public Person[] PersonArray
+        {
+            get
+            {
+                return personArray;
+            }
+
+            set
+            {
+                personArray = value;
+            }
+        }
+
 
         public int Size()
         {
-            return people.Length;
+            return personArray.Length;
         }
 
         public Person[] FindAll()
         {
-            return people;
+            return personArray;
         }
 
         public Person FindById(int personId)
         {
                
-            foreach (Person person in people)
+            foreach (Person person in personArray)
             {
                 if (person.PersonId == personId)
                 {
@@ -34,10 +47,19 @@ namespace TodoIt.Data
             return null;
         }
 
-        /*public Person CreateNewPerson()
+        public Person CreateNewPerson(string firstName, string lastName)
         {
-            Person newPerson = new Person();
-¨          
-        }*/
+            Person newPerson = new Person(firstName, lastName, PersonSequencer.NextPersonId());
+            Array.Resize(ref personArray, personArray.Length + 1);
+            return newPerson;          
+        }
+
+        public void Clear()
+        {
+            personArray = new Person[0];
+        }
+
+        
+
     }//class
 }//namespace
