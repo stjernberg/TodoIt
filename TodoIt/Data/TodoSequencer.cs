@@ -8,7 +8,7 @@ namespace TodoIt.Data
     {
         private static int todoId;
 
-        public static int PersonId
+        public static int TodoId
         {
             get
             {
@@ -21,7 +21,7 @@ namespace TodoIt.Data
         }
         public TodoSequencer(int personId)
         {
-            PersonId = personId;
+            TodoId = personId;
         }
         public static int NextTodoId()
         {
@@ -30,11 +30,10 @@ namespace TodoIt.Data
         }
 
 
-        public static int Reset()
+        public static void Reset()
         {
             todoId = 0;
-            return todoId;
-
+            
         }
     }
 }

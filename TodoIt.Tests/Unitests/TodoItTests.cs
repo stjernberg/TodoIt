@@ -8,9 +8,8 @@ namespace TodoIt.Tests
     public class TodoItTests
     { 
 
-        // ----------  Person Class Test ------------------
-        
-        
+        // ----------  Person Tests ------------------
+                
 
         [Theory]
         [InlineData("")]
@@ -67,7 +66,7 @@ namespace TodoIt.Tests
                     
         }
 
-        //----------------Todo Class Tests -----------------------
+        //----------------Todo Tests -----------------------
 
         [Fact]
         public void CorrectInfoTodoTest()
@@ -85,6 +84,8 @@ namespace TodoIt.Tests
             
 
         }
+
+        //------------PersonSequencer Tests ----------------------------
 
         [Fact]
         public void IncrementPersonIdTest()
@@ -105,19 +106,21 @@ namespace TodoIt.Tests
         public void ResetPersonIdTest()
         {
 
-          
             //Arrange
-            PersonSequencer testSequencer = new PersonSequencer(2);
+            int expected = 0;
+            int actual;
+            actual = PersonSequencer.PersonId;
 
             //Act
-            int result = PersonSequencer.Reset();
-           
-            int expected = 0;
+            PersonSequencer.PersonId = 5;
+            PersonSequencer.Reset();
+
 
             //Assert
-            Assert.Equal(expected, result);
-
+            Assert.Equal(expected, actual);
         }
+
+        //-------Todo Sequencer Test --------------------------------------
 
         [Fact]
         public void IncrementTodoIdTest()
@@ -137,18 +140,19 @@ namespace TodoIt.Tests
         [Fact]
         public void ResetTodoIdTest()
         {
-
-
             //Arrange
-            PersonSequencer testSequencer = new PersonSequencer(2);
+            int expected = 0;
+            int actual;
+            actual = TodoSequencer.TodoId;
 
             //Act
-            int result = PersonSequencer.Reset();
+            TodoSequencer.TodoId = 5;
+            TodoSequencer.Reset();
 
-            int expected = 0;
 
             //Assert
-            Assert.Equal(expected, result);
+            Assert.Equal(expected, actual);
+
 
         }
 

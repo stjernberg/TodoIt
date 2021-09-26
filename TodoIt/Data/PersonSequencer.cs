@@ -31,11 +31,10 @@ namespace TodoIt.Data
          }
 
 
-        public static int Reset()
+        public static void Reset()
         {
             personId = 0;
-            return personId;
-            
+                       
         }
     }
 }
