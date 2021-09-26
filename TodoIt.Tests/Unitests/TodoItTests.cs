@@ -5,37 +5,12 @@ using TodoIt.Data;
 
 namespace TodoIt.Tests
 {
-    public class PersonTest
-    {
-        [Fact]
-        public void TestFirstNameGoodValue()
-        {
-            //Arrange
-            string expectedFirstName = "Luie";
-            Person testPerson = new Person(2, "Sam", "Jonsson");
+    public class TodoItTests
+    { 
 
-            //Act
-            testPerson.FirstName = expectedFirstName;
-            string result = testPerson.FirstName;
-
-            //Assert
-            Assert.Equal(expectedFirstName, result);
-        }
-
-        [Fact]
-        public void TestLastNameGoodValue()
-        {
-            //Arrange
-            string expectedLastName = "Sundblad";
-            Person testPerson = new Person(4, "Jenny", "Svensson");
-
-            //Act
-            testPerson.LastName = expectedLastName;
-            string result = testPerson.LastName;
-
-            //Assert
-            Assert.Equal(expectedLastName, result);
-        }
+        // ----------  Person Class Test ------------------
+        
+        
 
         [Theory]
         [InlineData("")]
@@ -51,6 +26,7 @@ namespace TodoIt.Tests
 
             //Assert
             Assert.Contains("FirstName", exception.Message);
+
         }
 
         [Theory]
@@ -79,18 +55,19 @@ namespace TodoIt.Tests
             string firstName = "Susy";
             string lastName = "Lund";
             int personId = 1;
-            Person testPerson = new Person(personId, firstName, lastName);
+
 
             //Act
-            string result = testPerson.InfoPerson();
+            Person testPerson = new Person(personId, firstName, lastName);
 
             //Assert
-            Assert.NotNull(result);
-            Assert.Contains(firstName, result);
-            Assert.Contains(lastName, result);
-            Assert.Contains(personId.ToString(), result);
-
+            Assert.Equal(firstName, testPerson.FirstName);
+            Assert.Equal(lastName, testPerson.LastName);
+            Assert.Equal(personId, testPerson.PersonId);
+                    
         }
+
+        //----------------Todo Class Tests -----------------------
 
         [Fact]
         public void CorrectInfoTodoTest()
@@ -98,15 +75,14 @@ namespace TodoIt.Tests
             //Arrange
             int todoId = 3;
             string description = "Finish assignment";
+                        
+            //Act
             Todo testTodo = new Todo(todoId, description);
 
-            //Act
-            string result = testTodo.InfoTodo();
-
             //Assert
-            Assert.NotNull(result);
-            Assert.Contains(todoId.ToString(), result);
-            Assert.Contains(description, result);
+            Assert.Equal(todoId, testTodo.TodoId );
+            Assert.Equal(description, testTodo.Description);
+            
 
         }
 

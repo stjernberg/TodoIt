@@ -75,12 +75,5 @@ namespace TodoIt.Models
         }
 
 
-        //testing the info
-        public string InfoPerson()
-        {
-            return $"Person Info\nFirst name: {firstName}\nLast name: {lastName}\nPerson Id: {personId}";
-        }
-
-
     }//class
 }//namespace
