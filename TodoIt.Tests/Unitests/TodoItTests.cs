@@ -147,16 +147,14 @@ namespace TodoIt.Tests
         {
             //Arrange
             int expected = 0;
-            int actual;
-            actual = TodoSequencer.TodoId;
+            TodoSequencer.TodoId = 4;
 
             //Act
-            TodoSequencer.TodoId = 5;
             TodoSequencer.Reset();
 
 
             //Assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, TodoSequencer.TodoId);
 
         }
 
@@ -167,6 +165,7 @@ namespace TodoIt.Tests
         public void CheckIfPersonIsCreated()
         {
             //Arrange
+           
             string firstName1 = "Hanna";
             string lastName1 = "Ljung";
             int expectedId1 = 1;
@@ -174,6 +173,7 @@ namespace TodoIt.Tests
             string lastName2 = "Lund";
             int expectedId2 = 2;
             People testingPeople = new People();
+            testingPeople.Clear();
 
             //Act
             Person testPerson1 = testingPeople.CreateNewPerson(firstName1, lastName1);
@@ -189,13 +189,34 @@ namespace TodoIt.Tests
 
         }
 
-        [Fact]
-        public void FinByIdTest()
+        /*[Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        public void FindPersonByIdTest(int checkedPersonId)
         {
             //Arrange
-            
+           
             People testingPeople = new People();
-            
+            testingPeople.CreateNewPerson("Fred", "Lindberg");
+            testingPeople.CreateNewPerson("Anna", "Molin");
+            testingPeople.CreateNewPerson("Jens", "Schmidth");
+
+            Person matchedPerson;
+
+            //Act
+            matchedPerson = testingPeople.FindById(checkedPersonId);
+           
+            //Assert
+            Assert.Equal(checkedPersonId, matchedPerson.PersonId);            
+        }*/
+        [Fact]
+        public void FindByIdTest()
+        {
+            //Arrange
+
+            People testingPeople = new People();
+
             testingPeople.CreateNewPerson("Fred", "Lindberg");
             testingPeople.CreateNewPerson("Anna", "Molin");
             testingPeople.CreateNewPerson("Jens", "Schmidth");
@@ -205,19 +226,15 @@ namespace TodoIt.Tests
 
             //Act
             matchedPerson = testingPeople.FindById(checkedPersonId);
-           
+
             //Assert
             Assert.Equal(checkedPersonId, matchedPerson.PersonId);
-            
         }
-
-
-
-        [Fact]
-        public void CeckSize()
+            [Fact]
+        public void CheckSizePerson()
         {
             //Assert
-            
+           
             People testingPeople = new People();
             testingPeople.CreateNewPerson("Hanna", "Ljung");
             testingPeople.CreateNewPerson("Mona", "Lund");
@@ -232,11 +249,12 @@ namespace TodoIt.Tests
         }
 
         [Fact]
-        public void CheckFindAll()
+        public void CheckFindAllPeople()
         {
-            //Arrange
+            //Arrange            
             People testingPeople = new People();
-           
+            testingPeople.Clear();
+
             testingPeople.CreateNewPerson("Fred", "Lindberg");
             testingPeople.CreateNewPerson("Anna", "Molin");
             testingPeople.CreateNewPerson("Jens", "Schmidth");
@@ -247,6 +265,99 @@ namespace TodoIt.Tests
             //Assert
             Assert.Equal(expectedSize, foundPersons.Length);
         }
-    }
-}
+
+        // ----------TodoItem Tests --------------------
+        [Fact]
+
+        public void CheckIfTodoIsCreated()
+        {
+            //Arrange
+
+            string description1 = "Study";
+            int expectedId1 = 1;
+            string description2 = "Exercise";           
+            int expectedId2 = 2;
+            string description3 = "Cook";           
+            int expectedId3 = 3;
+            TodoItem testingPeople = new TodoItem();
+            testingPeople.Clear();
+
+            //Act
+            Todo testPerson1 = testingPeople.CreateNewTodo(description1);
+            Todo testPerson2 = testingPeople.CreateNewTodo(description2);
+            Todo testPerson3 = testingPeople.CreateNewTodo(description3);
+
+            //Assert
+            Assert.Equal(description1, testPerson1.Description);
+            Assert.Equal(expectedId1, testPerson1.TodoId);
+            Assert.Equal(description2, testPerson2.Description);
+            Assert.Equal(expectedId2, testPerson2.TodoId);
+            Assert.Equal(description3, testPerson3.Description);
+            Assert.Equal(expectedId3, testPerson3.TodoId);
+
+        }
+
+        [Theory]
+        [InlineData (1)]
+        [InlineData (2)]
+        [InlineData (3)]
+        public void FindTodoByIdTest(int checkedTodoId)
+        {
+            //Arrange
+
+            TodoItem testingPeople = new TodoItem();
+           
+            testingPeople.CreateNewTodo("Read");
+            testingPeople.CreateNewTodo("Go swimming");
+            testingPeople.CreateNewTodo("Finish assignment");
+
+           Todo matchedPerson;
+
+            //Act
+            matchedPerson = testingPeople.FindById(checkedTodoId);
+
+            //Assert
+            Assert.Equal(checkedTodoId, matchedPerson.TodoId);
+           
+        }
+
+
+        [Fact]
+        public void CheckTodoSize()
+        {
+            //Assert
+
+            People testingPeople = new People();
+            testingPeople.CreateNewPerson("Hanna", "Ljung");
+            testingPeople.CreateNewPerson("Mona", "Lund");
+
+            int expectedSize = 2;
+
+            //Act
+            int actualSize = testingPeople.Size();
+
+            //Assert
+            Assert.Equal(expectedSize, actualSize);
+        }
+
+        [Fact]
+        public void CheckFindAllTodos()
+        {
+            //Arrange            
+            People testingPeople = new People();
+            testingPeople.Clear();
+
+            testingPeople.CreateNewPerson("Fred", "Lindberg");
+            testingPeople.CreateNewPerson("Anna", "Molin");
+            testingPeople.CreateNewPerson("Jens", "Schmidth");
+            int expectedSize = 3;
+            //Act
+            Person[] foundPersons = testingPeople.FindAll();
+
+            //Assert
+            Assert.Equal(expectedSize, foundPersons.Length);
+        }
+
+    }//class
+}//namespace
 

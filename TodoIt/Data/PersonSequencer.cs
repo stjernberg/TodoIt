@@ -23,7 +23,7 @@ namespace TodoIt.Data
         
         public static int NextPersonId()          
         {
-             personId ++;
+             ++personId;
              return personId;
          }
 

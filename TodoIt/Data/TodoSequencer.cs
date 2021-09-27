@@ -19,13 +19,10 @@ namespace TodoIt.Data
                todoId = value;
             }
         }
-        public TodoSequencer(int personId)
-        {
-            TodoId = personId;
-        }
+       
         public static int NextTodoId()
         {
-            todoId++;
+            ++todoId;
             return todoId;
         }
 
