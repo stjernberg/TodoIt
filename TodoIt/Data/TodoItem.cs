@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using TodoIt.Models;
 
 namespace TodoIt.Data
 {
-    //The old version
-    public class TodoItem
+        public class TodoItem
     {
         private static Todo[] todoArray = new Todo[0];
 
