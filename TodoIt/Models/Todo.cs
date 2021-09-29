@@ -56,7 +56,7 @@ namespace TodoIt.Models
                 assignee = value;
             }
         }
-        public Todo(int todoId, string description)
+        public Todo(string description, int todoId)
         {
             this.todoId = todoId;
             this.description = description;

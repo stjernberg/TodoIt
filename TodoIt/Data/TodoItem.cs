@@ -5,6 +5,7 @@ using TodoIt.Models;
 
 namespace TodoIt.Data
 {
+    //The old version
     public class TodoItem
     {
         private static Todo[] todoArray = new Todo[0];
@@ -49,7 +50,7 @@ namespace TodoIt.Data
 
         public Todo CreateNewTodo(string description)
         {
-            Todo newTodo = new Todo(TodoSequencer.NextTodoId(), description);
+            Todo newTodo = new Todo (description, TodoSequencer.NextTodoId());
             Array.Resize(ref todoArray, todoArray.Length + 1);
             todoArray[todoArray.Length - 1] = newTodo;
             return newTodo;
@@ -60,7 +61,7 @@ namespace TodoIt.Data
             todoArray = new Todo[0];
         }
 
-        public Todo[] FindByDoneStaus(bool doneStatus)
+        public Todo[] FindByDoneStatus(bool doneStatus)
         {
             Todo[] filteredArray = new Todo[0];
             foreach (Todo todoItem in todoArray)

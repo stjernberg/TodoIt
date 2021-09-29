@@ -10,7 +10,6 @@ namespace TodoIt.Tests
 
         // ----------  Person Tests ------------------
 
-
         [Theory]
         [InlineData("")]
         [InlineData(" ")]
@@ -47,171 +46,171 @@ namespace TodoIt.Tests
 
 
 
-        [Fact]
-        public void CorrectInfoPersonTest()
-        {
-            //Arrange
-            string firstName = "Susy";
-            string lastName = "Lund";
-            int personId = 1;
+         [Fact]
+         public void CorrectInfoPersonTest()
+         {
+             //Arrange
+             string firstName = "Susy";
+             string lastName = "Lund";
+             int personId = 1;
 
 
-            //Act
-            Person testPerson = new Person(firstName, lastName, personId);
+             //Act
+             Person testPerson = new Person(firstName, lastName, personId);
 
-            //Assert
-            Assert.Equal(firstName, testPerson.FirstName);
-            Assert.Equal(lastName, testPerson.LastName);
-            Assert.Equal(personId, testPerson.PersonId);
+             //Assert
+             Assert.Equal(firstName, testPerson.FirstName);
+             Assert.Equal(lastName, testPerson.LastName);
+             Assert.Equal(personId, testPerson.PersonId);
 
-        }
+         }
 
-        //----------------Todo Tests -----------------------
+         //----------------Todo Tests -----------------------
 
-        [Fact]
-        public void CorrectInfoTodoTest()
-        {
-            //Arrange
-            int todoId = 3;
-            string description = "Finish assignment";
+         [Fact]
+         public void CorrectInfoTodoTest()
+         {
+             //Arrange
+             int todoId = 3;
+             string description = "Finish assignment";
 
-            //Act
-            Todo testTodo = new Todo(todoId, description);
+             //Act
+             Todo testTodo = new Todo(todoId, description);
 
-            //Assert
-            Assert.Equal(todoId, testTodo.TodoId);
-            Assert.Equal(description, testTodo.Description);
-
-
-        }
-
-        //------------PersonSequencer Tests ----------------------------
-
-        [Fact]
-        public void IncrementPersonIdTest()
-        {
-
-            //Arrange            
-            //PersonSequencer testSequencer = new PersonSequencer(5);
-
-            //Act
-            int result = PersonSequencer.NextPersonId();
-            int expected = 6;
-
-            //Assert
-            Assert.Equal(expected, result);
-        }
-
-        [Fact]
-        public void ResetPersonIdTest()
-        {
-
-            //Arrange
-            int expected = 0;
-            int actual;
-            actual = PersonSequencer.PersonId;
-
-            //Act
-            PersonSequencer.PersonId = 5;
-            PersonSequencer.Reset();
+             //Assert
+             Assert.Equal(todoId, testTodo.TodoId);
+             Assert.Equal(description, testTodo.Description);
 
 
-            //Assert
-            Assert.Equal(expected, actual);
-        }
+         }
 
-        //-------Todo Sequencer Test --------------------------------------
+         //------------PersonSequencer Tests ----------------------------
 
-        [Fact]
-        public void IncrementTodoIdTest()
-        {
+         [Fact]
+         public void IncrementPersonIdTest()
+         {
 
-            //Arrange
-            int startId = 1;          
-            int expectedId = 2;
-            int id1;
-            int id2;
+             //Arrange            
+             //PersonSequencer testSequencer = new PersonSequencer(5);
 
-            //Act
-            id1 = PersonSequencer.NextPersonId();
-            id2 = PersonSequencer.NextPersonId();
+             //Act
+             int result = PersonSequencer.NextPersonId();
+             int expected = 6;
 
-            
-            //Assert
-            Assert.Equal(startId, id1);
-            Assert.Equal(expectedId, id2);
-        }
+             //Assert
+             Assert.Equal(expected, result);
+         }
 
-        [Fact]
-        public void ResetTodoIdTest()
-        {
-            //Arrange
-            int expected = 0;
-            TodoSequencer.TodoId = 4;
+         [Fact]
+         public void ResetPersonIdTest()
+         {
 
-            //Act
-            TodoSequencer.Reset();
+             //Arrange
+             int expected = 0;
+             int actual;
+             actual = PersonSequencer.PersonId;
+
+             //Act
+             PersonSequencer.PersonId = 5;
+             PersonSequencer.Reset();
 
 
-            //Assert
-            Assert.Equal(expected, TodoSequencer.TodoId);
+             //Assert
+             Assert.Equal(expected, actual);
+         }
 
-        }
+         //-------Todo Sequencer Test --------------------------------------
+
+         [Fact]
+         public void IncrementTodoIdTest()
+         {
+
+             //Arrange
+             int startId = 1;          
+             int expectedId = 2;
+             int id1;
+             int id2;
+
+             //Act
+             id1 = PersonSequencer.NextPersonId();
+             id2 = PersonSequencer.NextPersonId();
 
 
-        // ----------People Tests --------------------
-        [Fact]
+             //Assert
+             Assert.Equal(startId, id1);
+             Assert.Equal(expectedId, id2);
+         }
 
-        public void CheckIfPersonIsCreated()
-        {
-            //Arrange
-           
-            string firstName1 = "Hanna";
-            string lastName1 = "Ljung";
-            int expectedId1 = 1;
-            string firstName2 = "Mona";
-            string lastName2 = "Lund";
-            int expectedId2 = 2;
-            People testingPeople = new People();
-            testingPeople.Clear();
+         [Fact]
+         public void ResetTodoIdTest()
+         {
+             //Arrange
+             int expected = 0;
+             TodoSequencer.TodoId = 4;
 
-            //Act
-            Person testPerson1 = testingPeople.CreateNewPerson(firstName1, lastName1);
-            Person testPerson2 = testingPeople.CreateNewPerson(firstName2, lastName2);
+             //Act
+             TodoSequencer.Reset();
 
-            //Assert
-            Assert.Equal(firstName1, testPerson1.FirstName);
-            Assert.Equal(lastName1, testPerson1.LastName);
-            Assert.Equal(expectedId1, testPerson1.PersonId);
-            Assert.Equal(firstName2, testPerson2.FirstName);
-            Assert.Equal(lastName2, testPerson2.LastName);
-            Assert.Equal(expectedId2, testPerson2.PersonId);
 
-        }
+             //Assert
+             Assert.Equal(expected, TodoSequencer.TodoId);
 
-        /*[Theory]
-        [InlineData(1)]
-        [InlineData(2)]
-        [InlineData(3)]
-        public void FindPersonByIdTest(int checkedPersonId)
-        {
-            //Arrange
-           
-            People testingPeople = new People();
-            testingPeople.CreateNewPerson("Fred", "Lindberg");
-            testingPeople.CreateNewPerson("Anna", "Molin");
-            testingPeople.CreateNewPerson("Jens", "Schmidth");
+         }
 
-            Person matchedPerson;
 
-            //Act
-            matchedPerson = testingPeople.FindById(checkedPersonId);
-           
-            //Assert
-            Assert.Equal(checkedPersonId, matchedPerson.PersonId);            
-        }*/
-        [Fact]
-        public void FindByIdTest()
+         // ----------People Tests --------------------
+         [Fact]
+
+         public void CheckIfPersonIsCreated()
+         {
+             //Arrange
+
+             string firstName1 = "Hanna";
+             string lastName1 = "Ljung";
+             int expectedId1 = 1;
+             string firstName2 = "Mona";
+             string lastName2 = "Lund";
+             int expectedId2 = 2;
+             People testingPeople = new People();
+             testingPeople.Clear();
+
+             //Act
+             Person testPerson1 = testingPeople.CreateNewPerson(firstName1, lastName1);
+             Person testPerson2 = testingPeople.CreateNewPerson(firstName2, lastName2);
+
+             //Assert
+             Assert.Equal(firstName1, testPerson1.FirstName);
+             Assert.Equal(lastName1, testPerson1.LastName);
+             Assert.Equal(expectedId1, testPerson1.PersonId);
+             Assert.Equal(firstName2, testPerson2.FirstName);
+             Assert.Equal(lastName2, testPerson2.LastName);
+             Assert.Equal(expectedId2, testPerson2.PersonId);
+
+         }
+
+         /*[Theory]
+         [InlineData(1)]
+         [InlineData(2)]
+         [InlineData(3)]
+         public void FindPersonByIdTest(int checkedPersonId)
+         {
+             //Arrange
+
+             People testingPeople = new People();
+             testingPeople.CreateNewPerson("Fred", "Lindberg");
+             testingPeople.CreateNewPerson("Anna", "Molin");
+             testingPeople.CreateNewPerson("Jens", "Schmidth");
+
+             Person matchedPerson;
+
+             //Act
+             matchedPerson = testingPeople.FindById(checkedPersonId);
+
+             //Assert
+             Assert.Equal(checkedPersonId, matchedPerson.PersonId);            
+         }*/
+       [Fact]
+        public void FinByIdTest()
         {
             //Arrange
 
@@ -267,7 +266,7 @@ namespace TodoIt.Tests
         }
 
         // ----------TodoItem Tests --------------------
-        [Fact]
+       [Fact]
 
         public void CheckIfTodoIsCreated()
         {
