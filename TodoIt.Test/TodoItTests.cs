@@ -286,17 +286,14 @@ namespace TodoIt.Tests
 
         public void CreateNewTodoTest()
         {
-
             //Arrange
-
-            string description1 = "Study";
-            int expectedId1 = 1;
-            string description2 = "Exercise";
-            int expectedId2 = 2;
-            string description3 = "Cook";
-            int expectedId3 = 3;
             TodoItem testingTodo = new TodoItem();
             testingTodo.Clear();
+           
+            string description1 = "Study";            
+            string description2 = "Exercise";            
+            string description3 = "Cook";          
+           
 
             //Act
             Todo testPerson1 = testingTodo.CreateNewTodo(description1);
@@ -305,12 +302,8 @@ namespace TodoIt.Tests
 
             //Assert
             Assert.Equal(description1, testPerson1.Description);
-            Assert.Equal(expectedId1, testPerson1.TodoId);
             Assert.Equal(description2, testPerson2.Description);
-            Assert.Equal(expectedId2, testPerson2.TodoId);
             Assert.Equal(description3, testPerson3.Description);
-            Assert.Equal(expectedId3, testPerson3.TodoId);
-
         }
 
         [Theory]
@@ -404,7 +397,6 @@ namespace TodoIt.Tests
         }
 
         [Fact]
-
         public void TestFindByAssigneeId()
         {
             //Arrange
