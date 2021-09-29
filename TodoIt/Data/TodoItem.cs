@@ -50,7 +50,7 @@ namespace TodoIt.Data
 
         public Todo CreateNewTodo(string description)
         {
-            Todo newTodo = new Todo (description, TodoSequencer.NextTodoId());
+            Todo newTodo = new Todo(description, TodoSequencer.NextTodoId());
             Array.Resize(ref todoArray, todoArray.Length + 1);
             todoArray[todoArray.Length - 1] = newTodo;
             return newTodo;
@@ -119,6 +119,25 @@ namespace TodoIt.Data
                 }
             }
             return filteredArray;
+        }
+
+        public void RemoveTodo(int id)
+        {
+       
+            for (int i = 0; i < todoArray.Length; i++)
+            {
+                if (todoArray[i].TodoId == id)
+                {
+                   
+                    for (int offset = i+1; offset < todoArray.Length; offset++, i++)
+                    {
+                          todoArray[i] = todoArray[offset];
+                    }
+                    Array.Resize(ref todoArray, todoArray.Length - 1);
+                    break;                    
+                }
+           }
+           
         }
 
     }//class

@@ -8,9 +8,9 @@ namespace TodoIt.Data
     //testing
     public class People
     {
-       
+
         private static Person[] personArray = new Person[0];
-       
+
         public Person[] PersonArray
         {
             get
@@ -37,7 +37,7 @@ namespace TodoIt.Data
 
         public Person FindById(int personId)
         {
-               
+
             foreach (Person person in personArray)
             {
                 if (person.PersonId == personId)
@@ -53,7 +53,7 @@ namespace TodoIt.Data
             Person newPerson = new Person(firstName, lastName, PersonSequencer.NextPersonId());
             Array.Resize(ref personArray, personArray.Length + 1);
             personArray[personArray.Length - 1] = newPerson;
-            return newPerson;          
+            return newPerson;
         }
 
         public void Clear()
@@ -61,6 +61,24 @@ namespace TodoIt.Data
             personArray = new Person[0];
         }
 
+
+        public void RemovePerson(int id)
+        {
+
+            for (int i = 0; i < personArray.Length; i++)
+            {
+                if (personArray[i].PersonId == id)
+                {
+
+                    for (int offset = i + 1; offset < personArray.Length; offset++, i++)
+                    {
+                        personArray[i] = personArray[offset];
+                    }
+                    Array.Resize(ref personArray, personArray.Length - 1);
+                    break;
+                }
+            }
+        }
         
 
     }//class
