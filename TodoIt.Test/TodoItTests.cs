@@ -303,28 +303,26 @@ namespace TodoIt.Tests
             Assert.Equal(description3, testPerson3.Description);
         }
 
-        [Theory]
-        [InlineData(1)]
-        [InlineData(2)]
-        [InlineData(3)]
-        public void FindTodoByIdTest(int checkedTodoId)
+        [Fact]
+        
+        public void FindTodoByIdTest()
         {
             //Arrange
+            TodoItem testingTodos = new TodoItem();
 
-            TodoItem testingPeople = new TodoItem();
-
-            testingPeople.CreateNewTodo("Read");
-            testingPeople.CreateNewTodo("Go swimming");
-            testingPeople.CreateNewTodo("Finish assignment");
-
-            Todo matchedPerson;
+            Todo testTodo1 = testingTodos.CreateNewTodo("Read");
+            Todo testTodo2 = testingTodos.CreateNewTodo("Go swimming");
+            Todo testTodo3 = testingTodos.CreateNewTodo("Finish assignment");
+            int checkedTodoId = testTodo3.TodoId;
 
             //Act
-            matchedPerson = testingPeople.FindById(checkedTodoId);
+           Todo matchedTodo = testingTodos.FindById(checkedTodoId);
 
             //Assert
-            Assert.Equal(checkedTodoId, matchedPerson.TodoId);
-
+            Assert.NotEqual(matchedTodo, testTodo2);
+            Assert.NotEqual(matchedTodo, testTodo2);
+            Assert.Equal(matchedTodo, testTodo3);
+           
         }
 
 
