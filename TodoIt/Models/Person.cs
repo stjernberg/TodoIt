@@ -37,7 +37,7 @@ namespace TodoIt.Models
 
             set
             {
-                if (string.IsNullOrEmpty(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Firstname can't be null or empty.");
                 }
@@ -58,7 +58,7 @@ namespace TodoIt.Models
 
             set
             {
-                if (string.IsNullOrEmpty(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Lastname can't be null or empty.");
                 }

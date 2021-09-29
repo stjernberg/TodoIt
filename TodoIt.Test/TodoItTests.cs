@@ -208,27 +208,24 @@ namespace TodoIt.Tests
         public void FindPersonByIdTest()
         {
             //Arrange
-
             People testingPeople = new People();
-
-            testingPeople.CreateNewPerson("Fred", "Lindberg");
-            testingPeople.CreateNewPerson("Anna", "Molin");
-            testingPeople.CreateNewPerson("Jens", "Schmidth");
-
-            int checkedPersonId = 2;
-            Person matchedPerson;
-
+            Person testPerson1 = testingPeople.CreateNewPerson("Fred", "Lindberg");
+            Person testPerson2 = testingPeople.CreateNewPerson("Anna", "Molin");
+            Person testPerson3 = testingPeople.CreateNewPerson("Jens", "Schmidth");
+            int checkedPersonId = testPerson2.PersonId;
+           
             //Act
-            matchedPerson = testingPeople.FindById(checkedPersonId);
+            Person matchedPerson = testingPeople.FindById(checkedPersonId);
 
             //Assert
-            Assert.Equal(checkedPersonId, matchedPerson.PersonId);
+            Assert.NotEqual(matchedPerson, testPerson1);
+            Assert.Equal(matchedPerson, testPerson2);
+            Assert.NotEqual(matchedPerson, testPerson3);
         }
         [Fact]
         public void SizePersonTest()
         {
             //Assert
-
             People testingPeople = new People();
             testingPeople.CreateNewPerson("Hanna", "Ljung");
             testingPeople.CreateNewPerson("Mona", "Lund");
