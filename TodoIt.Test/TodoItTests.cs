@@ -93,6 +93,22 @@ namespace TodoIt.Tests
         }
 
         //------------PersonSequencer Tests ----------------------------
+        [Fact]
+        public void ResetPersonIdTest()
+        {
+
+            //Arrange
+            PersonSequencer.Reset();
+            int expected = 0;
+            int actual;
+            actual = PersonSequencer.PersonId;
+
+            //Act
+            PersonSequencer.PersonId = 5;
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
 
         [Fact]
         public void NextPersonIdTest()
@@ -114,25 +130,7 @@ namespace TodoIt.Tests
 
         }
 
-        [Fact]
-        public void ResetPersonIdTest()
-        {
-
-
-            //Arrange
-            PersonSequencer.Reset();
-            int expected = 0;
-            int actual;
-            actual = PersonSequencer.PersonId;
-
-            //Act
-            PersonSequencer.PersonId = 5;
-
-
-
-            //Assert
-            Assert.Equal(expected, actual);
-        }
+        
 
         //-------Todo Sequencer Test --------------------------------------
 
