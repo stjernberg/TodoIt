@@ -25,7 +25,7 @@ namespace TodoIt.Tests
             ArgumentException exception = Assert.Throws<ArgumentException>(() => testPerson.FirstName = badFirstName);
 
             //Assert
-            Assert.Contains("FirstName", exception.Message);
+            Assert.Contains("Firstname", exception.Message);
 
         }
 
@@ -42,7 +42,7 @@ namespace TodoIt.Tests
             var exception = Assert.Throws<ArgumentException>(() => testPerson.LastName = badLastName);
 
             //Assert
-            Assert.Contains("LastName", exception.Message);
+            Assert.Contains("Lastname", exception.Message);
         }
 
 
